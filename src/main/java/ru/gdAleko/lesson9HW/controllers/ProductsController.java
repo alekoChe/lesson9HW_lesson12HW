@@ -58,7 +58,8 @@ public class ProductsController {
 
     @GetMapping("/cart/{id}")         //@PostMapping
     public void addProductInCartPost(@RequestParam Long productId, @RequestParam(defaultValue = "1") Integer quantity) {
-        cartService.addProductIntoCart(productId, quantity);
+        Product product = productsService.findById(productId).orElseThrow(() -> new ResourceNotFoundException("Product not found, id: " + productId));
+        cartService.addProductIntoCart(product, quantity);
     }
 
     @PostMapping

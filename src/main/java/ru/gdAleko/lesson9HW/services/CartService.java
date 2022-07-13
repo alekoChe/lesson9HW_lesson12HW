@@ -35,8 +35,14 @@ public class CartService {
         cartLList.removeIf(x -> x.getId().equals(id));
     }
 
-    public void addProductIntoCart(Long id, Integer quantity) {
-        Product product = productsRepository.findById(id).orElseThrow();
+//    public void addProductIntoCart(Long id, Integer quantity) {
+//        Product product = productsRepository.findById(id).orElseThrow();
+//        PurchaseProducts purchaseProducts = new PurchaseProducts(product, quantity);
+//        cart.addProductIntoCart(purchaseProducts);
+//    }
+
+    public void addProductIntoCart(Product product, Integer quantity) {
+        //Product product = productsRepository.findById(id).orElseThrow();
         PurchaseProducts purchaseProducts = new PurchaseProducts(product, quantity);
         cart.addProductIntoCart(purchaseProducts);
     }
